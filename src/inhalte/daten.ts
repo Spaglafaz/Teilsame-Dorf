@@ -166,7 +166,7 @@ export const dokumente: { titel: string; kategorie: (typeof dokumentKategorien)[
   { titel: "Wurf- und Alpverordnung", kategorie: "Verordnungen", beschreibung: "Regelt die Nutzung der Alpen." },
   { titel: "Einladung und Traktanden Einungsgemeinde", kategorie: "Einungsgemeinde", beschreibung: "Unterlagen zur nächsten Einungsgemeinde." },
   { titel: "Korporationsparzellen Teilsamen Obsee und Dorf", kategorie: "Pläne & Parzellen", beschreibung: "Gemeinsamer Parzellenplan der beiden Teilsamen." },
-  { titel: "Korporationsbuch Obwalden", kategorie: "Korporationen OW", beschreibung: "Übersicht der Korporationen im Kanton Obwalden." },
+  { titel: "Korporationsbuch Obwalden", kategorie: "Korporationen OW", beschreibung: "Übersicht der Korporationen im Kanton Obwalden.", href: "/dokumente/korporationsbuch-obwalden.pdf" },
   { titel: "Anmeldung Teilenregister (PDF)", kategorie: "Formulare", beschreibung: "Papierversion des Online-Formulars." },
   { titel: "Pachtgesuch Garten", kategorie: "Formulare", beschreibung: "Gesuch um Pacht einer Gartenparzelle." },
 ];

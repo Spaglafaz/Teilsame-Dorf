@@ -3,6 +3,7 @@ import Seitenkopf from "@/components/Seitenkopf";
 import Teaser from "@/components/Teaser";
 import Filterliste from "@/components/Filterliste";
 import { dokumente, dokumentKategorien } from "@/inhalte/daten";
+import { pfad } from "@/lib/pfad";
 
 export const metadata: Metadata = { title: "Downloads" };
 
@@ -23,7 +24,7 @@ export default function DownloadsSeite() {
                   <span className="doks__rechts">
                     <span className="doks__format">PDF</span>
                     {d.href ? (
-                      <a className="link" href={d.href} download aria-label={`${d.titel} herunterladen`}>Herunterladen</a>
+                      <a className="link" href={pfad(d.href)} download aria-label={`${d.titel} herunterladen`}>Herunterladen</a>
                     ) : (
                       <span className="doks__folgt">folgt</span>
                     )}
