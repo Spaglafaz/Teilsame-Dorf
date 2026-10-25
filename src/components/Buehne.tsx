@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { gsap, ScrollSmoother, useGSAP, BEWEGUNG_ERLAUBT, MIT_MAUS } from "@/lib/gsap";
 import { setSmoother } from "@/lib/buehne";
+import { istFeedbackModus } from "./Feedback";
 
 /**
  * Bühne: weiches Scrollen (ScrollSmoother, nur mit Maus/Trackpad – Touch bleibt nativ)
@@ -16,6 +17,8 @@ export default function Buehne({ children }: { children: React.ReactNode }) {
     const mm = gsap.matchMedia();
 
     mm.add(`${BEWEGUNG_ERLAUBT} and ${MIT_MAUS}`, () => {
+      // Im Feedback-Modus normales Scrollen, damit Huddlekit Elemente exakt markieren kann
+      if (istFeedbackModus()) return;
       const s = ScrollSmoother.create({
         wrapper: "#glatt-huelle",
         content: "#glatt-inhalt",

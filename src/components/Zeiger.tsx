@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { gsap, useGSAP, BEWEGUNG_ERLAUBT, MIT_MAUS } from "@/lib/gsap";
+import { istFeedbackModus } from "./Feedback";
 
 /**
  * Eigener Mauszeiger (nur mit Maus): ein Punkt, der genau folgt, und ein Ring, der weich nachzieht.
@@ -22,6 +23,8 @@ export default function Zeiger() {
   useGSAP(() => {
     const mm = gsap.matchMedia();
     mm.add(`${MIT_MAUS} and ${BEWEGUNG_ERLAUBT}`, () => {
+      // Im Feedback-Modus bleibt der normale Mauszeiger (zum Markieren in Huddlekit)
+      if (istFeedbackModus()) return;
       const p = punkt.current!;
       const r = ring.current!;
       const html = document.documentElement;

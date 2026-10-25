@@ -6,6 +6,7 @@ import { gsap, ScrollTrigger, useGSAP, bewegungReduziert } from "@/lib/gsap";
 import { getSmoother, vorhangAuf, vorhangZu } from "@/lib/buehne";
 import { bereiche, navigation } from "@/inhalte/daten";
 import { ohneBasis } from "@/lib/pfad";
+import { istFeedbackModus } from "./Feedback";
 
 const ohneSchraegstrich = (p: string) => p.replace(/\/+$/, "") || "/";
 
@@ -85,7 +86,8 @@ export default function Vorhang() {
       if (url.origin !== location.origin || !/^https?:$/.test(url.protocol)) return;
       if (/\.[a-z0-9]{2,4}$/i.test(url.pathname)) return; // Dateien (PDF, PHP …)
       if (ohneSchraegstrich(url.pathname) === ohneSchraegstrich(location.pathname)) return; // gleiche Seite / Anker
-      if (bewegungReduziert() || unterwegs.current) return;
+      // Im Feedback-Modus nicht abfangen: Huddlekit muss Klicks auf Links zum Markieren stoppen können
+      if (bewegungReduziert() || unterwegs.current || istFeedbackModus()) return;
       e.preventDefault();
       e.stopPropagation();
       zudecken(ohneBasis(url.pathname) + url.search, url.hash);

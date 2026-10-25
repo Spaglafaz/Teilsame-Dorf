@@ -10,6 +10,7 @@ import Intro from "@/components/Intro";
 import Vorhang from "@/components/Vorhang";
 import Zeiger from "@/components/Zeiger";
 import Mikro from "@/components/Mikro";
+import Feedback, { FEEDBACK_ERKENNEN } from "@/components/Feedback";
 import { stammdaten } from "@/inhalte/daten";
 
 // Schriften lokal eingebunden (SIL Open Font License) – keine Anfragen an Google
@@ -45,9 +46,11 @@ export const viewport: Viewport = {
 // Entwurfsband: vor der Aufschaltung mit NEXT_PUBLIC_ENTWURF=false bauen.
 const ENTWURF = process.env.NEXT_PUBLIC_ENTWURF !== "false";
 
-// Läuft vor dem ersten Bild: JS-Klasse, Intro nur einmal pro Sitzung, Maus-Erkennung
+// Läuft vor dem ersten Bild: JS-Klasse, Feedback-Modus, Intro nur einmal pro Sitzung, Maus-Erkennung
 const VORAB = `(function(){var d=document.documentElement;d.classList.add('js');
-try{if(sessionStorage.getItem('tl-intro'))d.classList.add('intro-gesehen');else d.classList.add('intro-laeuft')}catch(e){d.classList.add('intro-gesehen')}
+${FEEDBACK_ERKENNEN}
+if(fb)d.classList.add('feedback-modus','intro-gesehen');
+else try{if(sessionStorage.getItem('tl-intro'))d.classList.add('intro-gesehen');else d.classList.add('intro-laeuft')}catch(e){d.classList.add('intro-gesehen')}
 if(matchMedia('(hover: hover) and (pointer: fine)').matches)d.classList.add('mit-maus')})()`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -74,6 +77,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Vorhang />
         <Zeiger />
         <Mikro />
+        <Feedback />
       </body>
     </html>
   );
