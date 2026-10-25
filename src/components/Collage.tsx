@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { gsap, useGSAP, BEWEGUNG_ERLAUBT } from "@/lib/gsap";
 import { bereit } from "@/lib/buehne";
+import { pfad } from "@/lib/pfad";
 
 export default function Collage({
   haupt,
@@ -38,8 +39,8 @@ export default function Collage({
   );
   return (
     <div ref={ref} className="collage">
-      <div className="collage__haupt" data-tilt=""><img src={haupt} alt={hauptAlt} loading="lazy" data-parallax="0.12" /></div>
-      <div className="collage__neben"><img src={neben} alt={nebenAlt} loading="lazy" /></div>
+      <div className="collage__haupt" data-tilt=""><img src={pfad(haupt)} alt={hauptAlt} loading="lazy" data-parallax="0.12" /></div>
+      <div className="collage__neben"><img src={pfad(neben)} alt={nebenAlt} loading="lazy" /></div>
       {badge && (
         <div className="collage__badge">
           <svg viewBox="0 0 132 132" aria-hidden="true"><circle cx="66" cy="66" r="60" /></svg>

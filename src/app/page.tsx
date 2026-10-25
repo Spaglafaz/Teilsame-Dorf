@@ -8,6 +8,7 @@ import { BereichKarte } from "@/components/Karten";
 import { AbschnittKopf, Button, Leer, Ueberzeile } from "@/components/Bausteine";
 import { Haken } from "@/components/Linien";
 import { bereiche, news, projekte } from "@/inhalte/daten";
+import { pfad } from "@/lib/pfad";
 
 export default function Startseite() {
   return (
@@ -83,7 +84,7 @@ export default function Startseite() {
             <div className="raster raster--3" data-stagger="">
               {news.slice(0, 3).map((n) => (
                 <article key={n.titel} className="news" data-tilt="">
-                  {n.bild && <div className="news__bild"><img src={n.bild} alt="" loading="lazy" /></div>}
+                  {n.bild && <div className="news__bild"><img src={pfad(n.bild)} alt="" loading="lazy" /></div>}
                   <div className="news__text">
                     <span className="etikett">{n.kategorie}</span> <time className="klein" dateTime={n.iso}>{n.datum}</time>
                     <h3>{n.titel}</h3>
@@ -105,7 +106,7 @@ export default function Startseite() {
           <div className="raster raster--3" data-stagger="">
             {projekte.map((p, i) => (
               <Link key={i} href="/projekte/" className="bkarte" data-tilt="" data-zeiger="Ansehen">
-                <div className="bkarte__bild"><img src={p.bild} alt={p.bildAlt} loading="lazy" /></div>
+                <div className="bkarte__bild"><img src={pfad(p.bild)} alt={p.bildAlt} loading="lazy" /></div>
                 <div className="bkarte__text">
                   <span className="bkarte__nr" aria-hidden="true">{i + 1}</span>
                   <h3>{p.titel}</h3>

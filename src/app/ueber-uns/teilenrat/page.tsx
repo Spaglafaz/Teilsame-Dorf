@@ -3,6 +3,7 @@ import Seitenkopf from "@/components/Seitenkopf";
 import Teaser from "@/components/Teaser";
 import { AbschnittKopf } from "@/components/Bausteine";
 import { teilenrat, type Person } from "@/inhalte/daten";
+import { pfad } from "@/lib/pfad";
 
 export const metadata: Metadata = { title: "Teilenrat" };
 
@@ -14,7 +15,7 @@ function Karte({ p, hervor }: { p: Person; hervor?: boolean }) {
   return (
     <article className={`person${hervor ? " person--hervor" : ""}`} data-tilt="">
       <div className="person__foto">
-        {p.foto ? <img src={p.foto} alt={`Porträt ${p.name}`} loading="lazy" /> : <span className="person__initialen">{initialen(p.name)}</span>}
+        {p.foto ? <img src={pfad(p.foto)} alt={`Porträt ${p.name}`} loading="lazy" /> : <span className="person__initialen">{initialen(p.name)}</span>}
       </div>
       <div className="person__text">
         {hervor && <span className="etikett">Vorsitz</span>}

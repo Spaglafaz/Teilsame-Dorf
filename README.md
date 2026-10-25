@@ -23,6 +23,16 @@ $env:NEXT_PUBLIC_ENTWURF="false"; npm run build
 2. Den **Inhalt** des Ordners `out/` per Dateimanager oder FTP in das Webverzeichnis (`httpdocs`) laden.
 3. `formular.php` liegt bereits in `out/`. Es versendet Kontakt- und Teilenregister-Formulare per PHP `mail()` an die Funktionsadressen. **Vor der Aufschaltung einen Testversand machen** und die Adressen oben in der Datei prüfen. Die Postfächer (info@, praesident@, gartenverwalter@, aktuar@) müssen existieren.
 
+## Vorschau auf GitHub Pages
+
+Bei jedem Push auf `main` baut GitHub die Seite automatisch und veröffentlicht sie unter
+**https://spaglafaz.github.io/Teilsame-Dorf/** (Ablauf: `.github/workflows/pages.yml`).
+
+- Einmalig nötig: auf GitHub unter **Settings → Pages → Source** «GitHub Actions» wählen.
+- Die Vorschau läuft im Unterordner `/Teilsame-Dorf`; dafür setzt der Ablauf `NEXT_PUBLIC_BASIS=/Teilsame-Dorf`.
+  Bilder und Dateien deshalb im Code immer mit `pfad("/bilder/…")` aus `src/lib/pfad.ts` einbinden.
+- GitHub Pages kann kein PHP: Die Formulare senden in der Vorschau nicht. Für die echte Aufschaltung gilt weiterhin der Abschnitt oben.
+
 ## Inhalte ändern
 
 Alle Texte, Personen, Termine, Kennzahlen, News, Projekte und Dokumente stehen in **`src/inhalte/daten.ts`**. Stellen mit `OFFEN` müssen noch bestätigt werden.

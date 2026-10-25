@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { gsap } from "@/lib/gsap";
 import { anliegen, stammdaten } from "@/inhalte/daten";
+import { pfad } from "@/lib/pfad";
 
 type Feld = {
   name: string;
@@ -96,7 +97,7 @@ export default function Formular({ art, felder, knopf }: { art: "kontakt" | "tei
     try {
       const daten = new FormData(form.current!);
       daten.set("formular", art);
-      const r = await fetch("/formular.php", { method: "POST", body: daten });
+      const r = await fetch(pfad("/formular.php"), { method: "POST", body: daten });
       const j = await r.json().catch(() => ({ ok: false }));
       if (!r.ok || !j.ok) throw new Error();
       setStatus("ok");

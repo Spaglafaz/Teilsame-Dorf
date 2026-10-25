@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { gsap, ScrollTrigger, useGSAP, bewegungReduziert } from "@/lib/gsap";
 import { getSmoother, vorhangAuf, vorhangZu } from "@/lib/buehne";
 import { bereiche, navigation } from "@/inhalte/daten";
+import { ohneBasis } from "@/lib/pfad";
 
 const ohneSchraegstrich = (p: string) => p.replace(/\/+$/, "") || "/";
 
@@ -87,7 +88,7 @@ export default function Vorhang() {
       if (bewegungReduziert() || unterwegs.current) return;
       e.preventDefault();
       e.stopPropagation();
-      zudecken(url.pathname + url.search, url.hash);
+      zudecken(ohneBasis(url.pathname) + url.search, url.hash);
     };
     window.addEventListener("click", klick, true);
     return () => window.removeEventListener("click", klick, true);

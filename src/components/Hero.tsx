@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { gsap, SplitText, useGSAP, BEWEGUNG_ERLAUBT, MIT_MAUS } from "@/lib/gsap";
 import { bereit } from "@/lib/buehne";
 import { Button } from "./Bausteine";
+import { pfad } from "@/lib/pfad";
 
 export default function Hero({
   bild,
@@ -88,7 +89,7 @@ export default function Hero({
   return (
     <section ref={ref} className="hero" aria-labelledby="hero-titel">
       <div className="hero__bild-rahmen">
-        <img className="hero__bild" src={bild} alt={bildAlt} fetchPriority="high" data-hero-teil="" />
+        <img className="hero__bild" src={pfad(bild)} alt={bildAlt} fetchPriority="high" data-hero-teil="" />
       </div>
       <div className="hero__schleier" data-hero-teil="" />
       <div className="hero__inhalt">

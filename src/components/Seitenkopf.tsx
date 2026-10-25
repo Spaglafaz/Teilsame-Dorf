@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Hoehenlinien } from "./Linien";
+import { pfad } from "@/lib/pfad";
 
 export default function Seitenkopf({
   titel,
@@ -16,7 +17,7 @@ export default function Seitenkopf({
 }) {
   return (
     <section className={`seitenkopf${bild ? " seitenkopf--bild" : ""}`}>
-      {bild && <img className="seitenkopf__bild" src={bild} alt="" data-parallax="0.18" />}
+      {bild && <img className="seitenkopf__bild" src={pfad(bild)} alt="" data-parallax="0.18" />}
       {!bild && <Hoehenlinien className="seitenkopf__linien" maus={24} />}
       <div className="huelle seitenkopf__inhalt">
         <nav aria-label="Brotkrumen">

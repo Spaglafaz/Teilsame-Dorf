@@ -6,6 +6,7 @@ import { BereichKarte } from "@/components/Karten";
 import { Button, Ueberzeile } from "@/components/Bausteine";
 import { Haken } from "@/components/Linien";
 import { bereiche } from "@/inhalte/daten";
+import { pfad } from "@/lib/pfad";
 
 export function generateStaticParams() {
   return bereiche.map((b) => ({ slug: b.slug }));
@@ -71,7 +72,7 @@ export default async function BereichSeite({ params }: { params: Promise<{ slug:
               )}
             </div>
             <div className="bereich-bild" style={{ marginTop: 24 }}>
-              <img src={b.bild} alt={b.bildAlt} loading="lazy" data-parallax="0.12" />
+              <img src={pfad(b.bild)} alt={b.bildAlt} loading="lazy" data-parallax="0.12" />
             </div>
           </aside>
         </div>

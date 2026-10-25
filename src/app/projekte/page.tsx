@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Seitenkopf from "@/components/Seitenkopf";
 import Teaser from "@/components/Teaser";
 import { projekte } from "@/inhalte/daten";
+import { pfad } from "@/lib/pfad";
 
 export const metadata: Metadata = { title: "Projekte" };
 
@@ -14,7 +15,7 @@ export default function ProjekteSeite() {
           <div className="raster raster--3" data-stagger="">
             {projekte.map((p, i) => (
               <article key={i} className="bkarte" data-tilt="">
-                <div className="bkarte__bild"><img src={p.bild} alt={p.bildAlt} loading="lazy" /></div>
+                <div className="bkarte__bild"><img src={pfad(p.bild)} alt={p.bildAlt} loading="lazy" /></div>
                 <div className="bkarte__text">
                   <span className="bkarte__nr" aria-hidden="true">{i + 1}</span>
                   <h3>{p.titel}</h3>
